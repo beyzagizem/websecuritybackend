@@ -13,12 +13,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.enable("trust proxy");
+const corsOpts = {
+  origin: "*",
 
+  methods: ["GET", "POST"],
+
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOpts));
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
-app.use(cors());
+//app.use(cors());
 
-app.options("*", cors());
+//app.options("*", cors());
 // app.options('/api/v1/tours/:id', cors());
 
 // Development logging
